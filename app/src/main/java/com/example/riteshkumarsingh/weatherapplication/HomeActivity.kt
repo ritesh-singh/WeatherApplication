@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.riteshkumarsingh.gojek.data.models.WeatherForecast
 import com.example.riteshkumarsingh.weatherapplication.service.Injection
 import retrofit2.Response
+import timber.log.Timber
 
 
 class HomeActivity : AppCompatActivity() {
@@ -17,11 +18,11 @@ class HomeActivity : AppCompatActivity() {
                 .getWeatherData("Bangalore", 4)
                 .enqueue(object : retrofit2.Callback<WeatherForecast> {
                     override fun onFailure(call: retrofit2.Call<WeatherForecast>?, t: Throwable?) {
-                        println(t?.message)
+                        Timber.d(t?.message)
                     }
 
                     override fun onResponse(call: retrofit2.Call<WeatherForecast>?, response: Response<WeatherForecast>?) {
-                        println(response?.body())
+                        Timber.d(response?.body().toString())
                     }
 
                 })

@@ -39,4 +39,7 @@ dependencies {
 
     // Okhttp loggin interceptor
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // Timber
+    compile "com.jakewharton.timber:timber:$timber_version"
 }
