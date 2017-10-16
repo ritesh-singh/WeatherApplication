@@ -1,4 +1,4 @@
-package com.example.riteshkumarsingh.githubuser
+package com.example.riteshkumarsingh.weatherapplication
 
 import org.junit.Test
 

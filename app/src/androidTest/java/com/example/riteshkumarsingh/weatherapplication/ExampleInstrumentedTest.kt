@@ -1,4 +1,4 @@
-package com.example.riteshkumarsingh.githubuser
+package com.example.riteshkumarsingh.weatherapplication
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

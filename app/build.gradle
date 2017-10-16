@@ -8,7 +8,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "com.example.riteshkumarsingh.githubuser"
+        applicationId "com.example.riteshkumarsingh.weatherapplication"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
@@ -39,4 +39,7 @@ dependencies {
 
     // Okhttp loggin interceptor
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    // Timber
+    compile "com.jakewharton.timber:timber:$timber_version"
 }
