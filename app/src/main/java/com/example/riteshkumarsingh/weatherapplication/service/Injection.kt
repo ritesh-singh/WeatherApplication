@@ -1,7 +1,7 @@
-package com.example.riteshkumarsingh.githubuser.service
+package com.example.riteshkumarsingh.weatherapplication.service
 
 import android.support.v4.BuildConfig
-import com.example.riteshkumarsingh.githubuser.Constants
+import com.example.riteshkumarsingh.weatherapplication.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -39,6 +39,11 @@ class Injection {
                     .build()
 
             return retrofit
+        }
+
+        fun provideApiService(): ApiService {
+            return provideRetrofit()
+                    .create(ApiService::class.java)
         }
     }
 }
