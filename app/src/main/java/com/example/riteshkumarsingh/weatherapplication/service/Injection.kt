@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 
+
 /**
  * Created by riteshkumarsingh on 13/10/17.
  */
@@ -18,6 +19,7 @@ class Injection {
 
         private val USER_AGENT = "User-Agent"
         private val ADEPT_ANDROID_APP = "Adept-Android-App"
+        private val VERSION = "version"
 
         fun getOkHttpClient(): OkHttpClient {
             val okHttpClient: OkHttpClient =
@@ -34,6 +36,14 @@ class Injection {
                 val request = chain.request()
                 val builder = request.newBuilder()
                         .addHeader(USER_AGENT, ADEPT_ANDROID_APP)
+
+                val url = request.url()
+                        .newBuilder()
+                        .addQueryParameter(VERSION, BuildConfig.VERSION_NAME)
+                        .build()
+
+                builder.url(url)
+
                 chain.proceed(builder.build())
             }
         }
