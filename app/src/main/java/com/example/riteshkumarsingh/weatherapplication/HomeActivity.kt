@@ -18,11 +18,11 @@ class HomeActivity : AppCompatActivity() {
                 .getWeatherData("Bangalore", 4)
                 .enqueue(object : retrofit2.Callback<WeatherForecast> {
                     override fun onFailure(call: retrofit2.Call<WeatherForecast>?, t: Throwable?) {
-                        Timber.d(t?.message)
+//                        Timber.d(t?.message)
                     }
 
                     override fun onResponse(call: retrofit2.Call<WeatherForecast>?, response: Response<WeatherForecast>?) {
-                        Timber.d(response?.body().toString())
+//                        Timber.d(response?.body().toString())
                     }
 
                 })
