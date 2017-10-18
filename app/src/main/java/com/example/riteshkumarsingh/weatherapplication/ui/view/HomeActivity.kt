@@ -7,23 +7,23 @@ import com.example.riteshkumarsingh.weatherapplication.R
 import com.example.riteshkumarsingh.weatherapplication.ui.presenter.HomeActivityPresenter
 
 
-class HomeActivity : AppCompatActivity(),HomeActivityView {
+class HomeActivity : AppCompatActivity(), HomeActivityView {
 
-    override fun showWeatherForecast(weatherForecast: WeatherForecast?) {
-    }
+  override fun showWeatherForecast(weatherForecast: WeatherForecast?) {
+  }
 
-    override fun showErrorView() {
-    }
+  override fun showErrorView() {
+  }
 
-    lateinit var presenter: HomeActivityPresenter
+  lateinit var presenter: HomeActivityPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_home)
 
-        presenter = HomeActivityPresenter(this)
+    presenter = HomeActivityPresenter(this)
 
-        presenter.fetchWeatherData()
+    presenter.fetchWeatherData()
 
-    }
+  }
 }
