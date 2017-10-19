@@ -69,6 +69,7 @@ class HomeActivityPresenterTest {
         .showWeatherForecast(weatherForecast)
   }
 
+
   @Test
   fun fetchWeatherData_shouldShowErrorView_whenFailRequest() {
     `when`(apiService.getWeatherData("Bangalore", 4))
@@ -87,6 +88,26 @@ class HomeActivityPresenterTest {
     verify(homeActivityView)
         .showErrorView()
 
+  }
+
+
+  @Test
+  fun fetchWeatherData_shouldDoNothing_whenBadRequest(){
+      `when`(apiService.getWeatherData("Bangalore",4))
+          .thenReturn(mockCall)
+
+    val response:Response<WeatherForecast> =
+        Response.error(500,responseBody)
+
+    homeActivityPresenter.fetchWeatherData()
+
+    verify(mockCall)
+        .enqueue(argumentCaptor.capture())
+
+    argumentCaptor.value
+        .onResponse(null,response)
+
+    verifyNoMoreInteractions(homeActivityView)
   }
 
 }
