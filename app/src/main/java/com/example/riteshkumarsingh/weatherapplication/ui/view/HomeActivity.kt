@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.riteshkumarsingh.gojek.data.models.WeatherForecast
 import com.example.riteshkumarsingh.weatherapplication.R
+import com.example.riteshkumarsingh.weatherapplication.service.Injection
 import com.example.riteshkumarsingh.weatherapplication.ui.presenter.HomeActivityPresenter
 
 
@@ -21,7 +22,8 @@ class HomeActivity : AppCompatActivity(), HomeActivityView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_home)
 
-    presenter = HomeActivityPresenter(this)
+    presenter = HomeActivityPresenter(this,Injection
+        .provideApiService())
 
     presenter.fetchWeatherData()
 
