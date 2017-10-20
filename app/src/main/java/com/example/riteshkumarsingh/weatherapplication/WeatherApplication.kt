@@ -5,20 +5,25 @@ import timber.log.Timber.DebugTree
 import timber.log.Timber
 
 
-
 /**
  * Created by riteshkumarsingh on 16/10/17.
  */
 class WeatherApplication : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-        initTimber()
-    }
+  companion object {
+    lateinit var instance: WeatherApplication
+  }
 
-    fun initTimber(){
-        if(BuildConfig.DEBUG){
-            Timber.plant(DebugTree())
-        }
+
+  override fun onCreate() {
+    super.onCreate()
+    instance = this
+    initTimber()
+  }
+
+  fun initTimber() {
+    if (BuildConfig.DEBUG) {
+      Timber.plant(DebugTree())
     }
+  }
 }
