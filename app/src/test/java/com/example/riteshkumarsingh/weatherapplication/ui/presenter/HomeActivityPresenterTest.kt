@@ -92,12 +92,12 @@ class HomeActivityPresenterTest {
 
 
   @Test
-  fun fetchWeatherData_shouldDoNothing_whenBadRequest(){
-      `when`(apiService.getWeatherData("Bangalore",4))
-          .thenReturn(mockCall)
+  fun fetchWeatherData_shouldDoNothing_whenBadRequest() {
+    `when`(apiService.getWeatherData("Bangalore", 4))
+        .thenReturn(mockCall)
 
-    val response:Response<WeatherForecast> =
-        Response.error(500,responseBody)
+    val response: Response<WeatherForecast> =
+        Response.error(500, responseBody)
 
     homeActivityPresenter.fetchWeatherData()
 
@@ -105,7 +105,7 @@ class HomeActivityPresenterTest {
         .enqueue(argumentCaptor.capture())
 
     argumentCaptor.value
-        .onResponse(null,response)
+        .onResponse(null, response)
 
     verifyNoMoreInteractions(homeActivityView)
   }
