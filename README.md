@@ -1,2 +1,2 @@
-# RetrofitExample
-A simple example based on retrofit
+# WeatherApplication
+A basic WeatherApp.
