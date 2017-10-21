@@ -5,12 +5,17 @@ import android.content.Context
 import timber.log.Timber.DebugTree
 import timber.log.Timber
 import android.net.ConnectivityManager
+import com.example.riteshkumarsingh.weatherapplication.di.components.ApplicationComponent
+import com.example.riteshkumarsingh.weatherapplication.di.components.DaggerApplicationComponent
+import com.example.riteshkumarsingh.weatherapplication.di.modules.ApplicationModule
 
 
 /**
  * Created by riteshkumarsingh on 16/10/17.
  */
 class WeatherApplication : Application() {
+
+  lateinit var applicationComponent: ApplicationComponent
 
   companion object {
     lateinit var instance: WeatherApplication
@@ -22,11 +27,18 @@ class WeatherApplication : Application() {
     }
   }
 
-
   override fun onCreate() {
     super.onCreate()
     instance = this
     initTimber()
+    initDi()
+  }
+
+  private fun initDi() {
+    applicationComponent = DaggerApplicationComponent
+        .builder()
+        .applicationModule(ApplicationModule(this))
+        .build()
   }
 
   fun initTimber() {
@@ -34,4 +46,5 @@ class WeatherApplication : Application() {
       Timber.plant(DebugTree())
     }
   }
+
 }
