@@ -1,8 +1,10 @@
 package com.example.riteshkumarsingh.weatherapplication
 
 import android.app.Application
+import android.content.Context
 import timber.log.Timber.DebugTree
 import timber.log.Timber
+import android.net.ConnectivityManager
 
 
 /**
@@ -12,6 +14,12 @@ class WeatherApplication : Application() {
 
   companion object {
     lateinit var instance: WeatherApplication
+
+    fun checkIfHasNetwork(): Boolean {
+      val cm = this.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+      val networkInfo = cm.activeNetworkInfo
+      return networkInfo != null && networkInfo.isConnected
+    }
   }
 
 

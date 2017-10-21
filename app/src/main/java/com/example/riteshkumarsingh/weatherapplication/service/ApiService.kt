@@ -1,6 +1,7 @@
 package com.example.riteshkumarsingh.weatherapplication.service
 
-import com.example.riteshkumarsingh.gojek.data.models.WeatherForecast
+
+import com.example.riteshkumarsingh.weatherapplication.models.WeatherForecast
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

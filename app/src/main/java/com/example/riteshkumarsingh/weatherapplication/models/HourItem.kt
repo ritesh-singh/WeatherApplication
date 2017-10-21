@@ -1,4 +1,4 @@
-package com.example.riteshkumarsingh.gojek.data.models
+package com.example.riteshkumarsingh.weatherapplication.models
 
 data class HourItem(
 	val feelslike_c: Double? = null,

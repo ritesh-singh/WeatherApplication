@@ -33,6 +33,7 @@ class Injection {
           OkHttpClient.Builder()
               .addInterceptor(provideHttpLoggingInterceptor())
               .addInterceptor(provideUrlAndHeaderInterceptor())
+              .addInterceptor(provideOfflineCacheInterceptor())
               .cache(provideCache())
               .addNetworkInterceptor(provideCacheInterceptor())
               .build()
@@ -83,6 +84,23 @@ class Injection {
         builder.url(url)
 
         chain.proceed(builder.build())
+      }
+    }
+
+    private fun provideOfflineCacheInterceptor(): Interceptor {
+      return Interceptor { chain ->
+        var request = chain.request()
+        if (!WeatherApplication.checkIfHasNetwork()) { // If no network
+          val cacheControl = CacheControl.Builder()
+              .maxStale(7, TimeUnit.DAYS) // Stale for 7 days, with the expired cache
+              .build()
+
+          request = request.newBuilder()
+              .cacheControl(cacheControl)
+              .build()
+        }
+
+        chain.proceed(request);
       }
     }
 

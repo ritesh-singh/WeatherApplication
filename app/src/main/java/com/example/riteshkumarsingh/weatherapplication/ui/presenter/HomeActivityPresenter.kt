@@ -1,6 +1,6 @@
 package com.example.riteshkumarsingh.weatherapplication.ui.presenter
 
-import com.example.riteshkumarsingh.gojek.data.models.WeatherForecast
+import com.example.riteshkumarsingh.weatherapplication.models.WeatherForecast
 import com.example.riteshkumarsingh.weatherapplication.service.ApiService
 import com.example.riteshkumarsingh.weatherapplication.service.Injection
 import com.example.riteshkumarsingh.weatherapplication.ui.view.HomeActivityView
