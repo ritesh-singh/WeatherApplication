@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
   compileSdkVersion 26
   buildToolsVersion "26.0.2"
@@ -46,7 +48,7 @@ dependencies {
 
   // Dagger2
   compile "com.google.dagger:dagger:$dagger2_version"
-  annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+  kapt "com.google.dagger:dagger-compiler:$dagger2_version"
 
   // Testing
   testImplementation 'junit:junit:4.12'
