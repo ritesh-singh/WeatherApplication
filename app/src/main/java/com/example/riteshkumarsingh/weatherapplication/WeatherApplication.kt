@@ -7,6 +7,7 @@ import timber.log.Timber
 import android.net.ConnectivityManager
 import com.example.riteshkumarsingh.weatherapplication.di.components.ApplicationComponent
 import com.example.riteshkumarsingh.weatherapplication.di.components.DaggerApplicationComponent
+import com.example.riteshkumarsingh.weatherapplication.di.modules.ApiModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApplicationModule
 
 
@@ -38,6 +39,7 @@ class WeatherApplication : Application() {
     applicationComponent = DaggerApplicationComponent
         .builder()
         .applicationModule(ApplicationModule(this))
+        .apiModule(ApiModule())
         .build()
   }
 

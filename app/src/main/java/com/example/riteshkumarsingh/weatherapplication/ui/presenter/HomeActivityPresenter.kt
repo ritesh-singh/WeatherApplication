@@ -1,35 +1,45 @@
 package com.example.riteshkumarsingh.weatherapplication.ui.presenter
 
+import android.os.AsyncTask
 import com.example.riteshkumarsingh.weatherapplication.models.WeatherForecast
-import com.example.riteshkumarsingh.weatherapplication.service.ApiService
-import com.example.riteshkumarsingh.weatherapplication.service.Injection
+import com.example.riteshkumarsingh.weatherapplication.network.ApiService
 import com.example.riteshkumarsingh.weatherapplication.ui.view.HomeActivityView
-import retrofit2.Response
 import timber.log.Timber
+
 
 /**
  * Created by riteshkumarsingh on 17/10/17.
  */
 class HomeActivityPresenter(private val homeActivityView: HomeActivityView,
-    private val apiService: ApiService) {
+    private val apiService: ApiService,
+    private val apiKey: String) {
   fun fetchWeatherData() {
-    apiService
-        .getWeatherData("Bangalore", 4)
-        .enqueue(object : retrofit2.Callback<WeatherForecast> {
-          override fun onFailure(call: retrofit2.Call<WeatherForecast>?, t: Throwable) {
-            homeActivityView.showErrorView()
-            Timber.e(t)
-          }
 
-          override fun onResponse(call: retrofit2.Call<WeatherForecast>?,
-              response: Response<WeatherForecast>) {
-            if (response.isSuccessful) {
-              homeActivityView.showWeatherForecast(response.body())
-              Timber.i(response.body().toString())
-            }
+    object : AsyncTask<Void, Void, WeatherForecast>() {
 
-          }
+      var e: Exception? = null
 
-        })
+      override fun doInBackground(vararg p0: Void?): WeatherForecast? {
+        try {
+          return apiService.getWeatherData(apiKey, "Bangalore", 4)
+        } catch (e: Exception) {
+          this.e = e
+          return null
+        }
+      }
+
+      override fun onPostExecute(result: WeatherForecast?) {
+        if (result == null) {
+          homeActivityView.showErrorView()
+          Timber.e(e)
+          return
+        }
+
+        homeActivityView.showWeatherForecast(result)
+        Timber.i(result.toString())
+
+      }
+
+    }
   }
 }
