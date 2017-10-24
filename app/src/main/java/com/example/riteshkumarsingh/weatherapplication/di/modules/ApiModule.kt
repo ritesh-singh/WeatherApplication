@@ -37,7 +37,7 @@ class ApiModule {
   private val CACHE_CONTROL = "Cache-Control"
 
 
-  @Provides
+  @Provides @Singleton
   fun provideCache(): Cache? {
     var cache: Cache? = null
     try {
@@ -50,7 +50,7 @@ class ApiModule {
     return cache
   }
 
-  @Provides
+  @Provides @Singleton
   @Named(Constants.cacheInterceptor)
   fun providesCacheInterceptor(): Interceptor {
     return Interceptor { chain ->
@@ -67,7 +67,7 @@ class ApiModule {
     }
   }
 
-  @Provides
+  @Provides @Singleton
   @Named(Constants.urlAndHeaderInterceptor)
   fun provideUrlAndHeaderInterceptor(): Interceptor {
     return Interceptor { chain ->
@@ -87,7 +87,7 @@ class ApiModule {
   }
 
 
-  @Provides
+  @Provides @Singleton
   @Named(Constants.offlineCacheInterceptor)
   fun provideOfflineCacheInterceptor(): Interceptor {
     return Interceptor { chain ->
@@ -106,7 +106,7 @@ class ApiModule {
     }
   }
 
-  @Provides
+  @Provides @Singleton
   fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
     val httpLoggingInterceptor = HttpLoggingInterceptor(
         HttpLoggingInterceptor.Logger { message -> Timber.d(message) })
@@ -114,7 +114,7 @@ class ApiModule {
     return httpLoggingInterceptor
   }
 
-  @Provides
+  @Provides @Singleton
   fun providesOkHttpClient(@Nullable cache: Cache,
       httpLoggingInterceptor: HttpLoggingInterceptor,
       @Named(Constants.cacheInterceptor) cacheInterceptor: Interceptor,
@@ -137,7 +137,7 @@ class ApiModule {
   @Named(Constants.weatherApiKey)
   fun providesWeatherApiKey(context: Context): String = context.getString(R.string.api_key)
 
-  @Provides
+  @Provides @Singleton
   fun providesEndPoint(@Named(Constants.weatherApiKey) apiKey: String): EndPoint =
       WeatherApiEndpoint()
 
