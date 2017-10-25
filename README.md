@@ -4,7 +4,7 @@ A basic weather application.
 The aim is to make use of different components and libraries and frameworks in Android.
 All different components are in their respective branch.
 
-Tech/Lanague/Libraries/Framework used or to be used - 
+Tech/Language/Libraries/Framework used or to be used - 
 
 1.Koltin as language 
 
