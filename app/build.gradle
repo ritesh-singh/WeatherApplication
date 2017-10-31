@@ -15,7 +15,8 @@ android {
     targetSdkVersion 26
     versionCode 1
     versionName "1.0"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "com.example.riteshkumarsingh.weatherapplication.ui.view.TestRunner"
   }
   buildTypes {
     release {
@@ -30,9 +31,6 @@ dependencies {
   implementation 'com.android.support:appcompat-v7:26.1.0'
   implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-  androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
@@ -50,7 +48,45 @@ dependencies {
   compile "com.google.dagger:dagger:$dagger2_version"
   kapt "com.google.dagger:dagger-compiler:$dagger2_version"
 
-  // Testing
+  //Dagger 2 - Testing
+  kaptTest "com.google.dagger:dagger-compiler:$dagger2_version"
+  kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger2_version"
+
+  androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+
+  // Testing - Mockito for unit test
+  testImplementation "org.mockito:mockito-all:$mockitoVersion"
+  testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+  testImplementation "org.powermock:powermock-module-junit4:$powerMockito"
+  testImplementation "org.powermock:powermock-api-mockito:$powerMockito"
   testImplementation 'junit:junit:4.12'
-  testImplementation "org.mockito:mockito-core:$mockito_version"
+
+  // Espresso UI Testing dependencies.
+  androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
+    exclude group: 'com.android.support', module: 'support-annotations'
+    exclude group: 'javax.inject'
+  })
+
+  // Android Testing Support Library's runner and rules
+  androidTestCompile("com.android.support.test:runner:$runnerVersion", {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+
+  androidTestCompile("com.android.support.test:rules:$rulesVersion", {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+
+  androidTestCompile("com.android.support.test.espresso:espresso-contrib:$espressoVersion", {
+    exclude module: 'support-annotations'
+    exclude module: 'support-v4'
+    exclude module: 'support-v13'
+    exclude module: 'recyclerview-v7'
+    exclude module: 'design'
+  })
+
+  // Mockito for Android Test
+  androidTestCompile "org.mockito:mockito-android:$mockitoAndroid"
+  androidTestCompile "com.squareup.okhttp3:mockwebserver:$mockWebServer"
 }

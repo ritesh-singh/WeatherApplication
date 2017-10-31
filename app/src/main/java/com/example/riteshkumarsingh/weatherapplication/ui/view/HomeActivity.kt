@@ -1,13 +1,12 @@
 package com.example.riteshkumarsingh.weatherapplication.ui.view
 
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import com.example.riteshkumarsingh.weatherapplication.R
 import com.example.riteshkumarsingh.weatherapplication.WeatherApplication
 import com.example.riteshkumarsingh.weatherapplication.models.WeatherForecast
-import com.example.riteshkumarsingh.weatherapplication.toast
 import com.example.riteshkumarsingh.weatherapplication.ui.di.DaggerHomeActivityComponent
 import com.example.riteshkumarsingh.weatherapplication.ui.di.HomeActivityComponent
 import com.example.riteshkumarsingh.weatherapplication.ui.di.HomeActivityPresenterModule
@@ -19,15 +18,19 @@ import javax.inject.Inject
 class HomeActivity : AppCompatActivity(), HomeActivityView {
 
 
-  var homeActivityComponent: HomeActivityComponent? = null
+  private var homeActivityComponent: HomeActivityComponent? = null
+
+  private lateinit var textView: TextView
 
   @Inject lateinit var sharedPreferences: SharedPreferences
 
   @Inject lateinit var presenter: HomeActivityPresenter
 
+
+
   private fun initDi() {
     homeActivityComponent = DaggerHomeActivityComponent.builder()
-        .applicationComponent((application as WeatherApplication).applicationComponent)
+        .applicationComponent(WeatherApplication.applicationComponent)
         .homeActivityPresenterModule(HomeActivityPresenterModule(this))
         .build()
 
@@ -35,11 +38,11 @@ class HomeActivity : AppCompatActivity(), HomeActivityView {
   }
 
   override fun showWeatherForecast(weatherForecast: WeatherForecast?) {
-    this.toast("Success")
+    textView.text = weatherForecast?.current?.temp_c?.toString()
   }
 
   override fun showErrorView() {
-    this.toast("error view called")
+    textView.text = getString(R.string.error_msg)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +50,8 @@ class HomeActivity : AppCompatActivity(), HomeActivityView {
     setContentView(R.layout.activity_home)
 
     initDi()
+
+    textView = findViewById(R.id.tv_sample_text)
 
     presenter.fetchWeatherData()
 

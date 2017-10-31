@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">WeatherApp</string>
   <string name="api_key">f308568837cd42d793d123416170610</string>
+  <string name="error_msg">Oops..!! Something went wrong</string>
 </resources>

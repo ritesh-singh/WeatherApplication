@@ -2,23 +2,25 @@ package com.example.riteshkumarsingh.weatherapplication
 
 import android.app.Application
 import android.content.Context
-import timber.log.Timber.DebugTree
-import timber.log.Timber
 import android.net.ConnectivityManager
 import com.example.riteshkumarsingh.weatherapplication.di.components.ApplicationComponent
 import com.example.riteshkumarsingh.weatherapplication.di.components.DaggerApplicationComponent
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApiModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApplicationModule
+import com.example.riteshkumarsingh.weatherapplication.di.modules.CacheModule
+import com.example.riteshkumarsingh.weatherapplication.di.modules.InterceptorModule
+import timber.log.Timber
+import timber.log.Timber.DebugTree
 
 
 /**
  * Created by riteshkumarsingh on 16/10/17.
  */
-class WeatherApplication : Application() {
-
-  lateinit var applicationComponent: ApplicationComponent
+open class WeatherApplication : Application() {
 
   companion object {
+    lateinit var applicationComponent: ApplicationComponent
+
     lateinit var instance: WeatherApplication
 
     fun checkIfHasNetwork(): Boolean {
@@ -35,10 +37,12 @@ class WeatherApplication : Application() {
     initDi()
   }
 
-  private fun initDi() {
+  open fun initDi() {
     applicationComponent = DaggerApplicationComponent
         .builder()
         .applicationModule(ApplicationModule(this))
+        .cacheModule(CacheModule())
+        .interceptorModule(InterceptorModule())
         .apiModule(ApiModule())
         .build()
   }

@@ -5,10 +5,9 @@ package com.example.riteshkumarsingh.weatherapplication.network
  */
 class WeatherApiEndpoint : EndPoint {
 
-  private val BASE_URL = "http://api.apixu.com/v1/"
+  private var BASE_URL = "http://api.apixu.com/v1/"
 
   override fun getUrl(): String {
     return BASE_URL
   }
-
 }
