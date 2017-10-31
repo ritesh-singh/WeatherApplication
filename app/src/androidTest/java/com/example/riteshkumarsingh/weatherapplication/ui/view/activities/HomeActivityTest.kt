@@ -7,6 +7,7 @@ import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import com.example.riteshkumarsingh.weatherapplication.R
 import com.example.riteshkumarsingh.weatherapplication.WeatherApplication
 import com.example.riteshkumarsingh.weatherapplication.ui.view.HomeActivity
 import com.example.riteshkumarsingh.weatherapplication.ui.view.component.ApplicationTestComponent
@@ -49,7 +50,7 @@ class HomeActivityTest {
 
   @Test
   fun shouldBeAbleToShowCurrentTemperature() {
-    val fileName = "forecast_data.json";
+    val fileName = "forecast_data.json"
     val instrumentation = InstrumentationRegistry.getInstrumentation()
 
     mockWebServer
@@ -62,11 +63,26 @@ class HomeActivityTest {
 
     homeActivity.launchActivity(null)
 
-    onView(withText("19.0"))
+    onView(withText("14.0"))
         .check(matches(isDisplayed()))
 
   }
 
+
+  fun shouldBeAbleToShowErrorMessage() {
+    val fileName = "not_found.json"
+    val instrumentation = InstrumentationRegistry.getInstrumentation()
+
+    mockWebServer
+        .enqueue(MockResponse()
+            .setResponseCode(404)
+            .setBody(RestServiceTestHelper.getStringFromFile(instrumentation.context, fileName)))
+
+    homeActivity.launchActivity(null)
+
+    onView(withText(instrumentation.targetContext.getString(R.string.error_msg)))
+        .check(matches(isDisplayed()))
+  }
 
   @After
   fun tearUp() {

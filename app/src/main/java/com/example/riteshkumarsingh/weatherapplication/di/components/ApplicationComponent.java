@@ -5,6 +5,7 @@ import com.example.riteshkumarsingh.weatherapplication.Constants;
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApiModule;
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApplicationModule;
 import com.example.riteshkumarsingh.weatherapplication.di.modules.CacheModule;
+import com.example.riteshkumarsingh.weatherapplication.di.modules.EndpointModule;
 import com.example.riteshkumarsingh.weatherapplication.di.modules.InterceptorModule;
 import com.example.riteshkumarsingh.weatherapplication.network.ApiService;
 import dagger.Component;
@@ -16,7 +17,8 @@ import javax.inject.Singleton;
  */
 
 @Singleton @Component(modules = {
-    ApplicationModule.class, CacheModule.class, InterceptorModule.class, ApiModule.class
+    ApplicationModule.class, EndpointModule.class, CacheModule.class, InterceptorModule.class,
+    ApiModule.class
 }) public interface ApplicationComponent {
   SharedPreferences getSharedPreferences();
 

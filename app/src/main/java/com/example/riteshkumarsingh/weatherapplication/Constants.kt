@@ -9,8 +9,6 @@ class Constants {
     const val cacheInterceptor = "cacheInterceptor"
     const val urlAndHeaderInterceptor = "urlAndHeaderInterceptor"
     const val offlineCacheInterceptor = "offlineCacheInterceptor"
-    const val unMockedEndPoint = "unMockedEndPoint"
-    const val mockedEndPoint = "mockedEndPoint"
 
     const val USER_AGENT = "User-Agent"
     const val ADEPT_ANDROID_APP = "Adept-Android-App"

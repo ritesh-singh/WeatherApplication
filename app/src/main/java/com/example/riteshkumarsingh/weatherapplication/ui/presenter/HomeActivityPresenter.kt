@@ -1,6 +1,5 @@
 package com.example.riteshkumarsingh.weatherapplication.ui.presenter
 
-import android.os.AsyncTask
 import com.example.riteshkumarsingh.weatherapplication.Constants
 import com.example.riteshkumarsingh.weatherapplication.models.WeatherForecast
 import com.example.riteshkumarsingh.weatherapplication.network.ApiService
@@ -33,6 +32,7 @@ class HomeActivityPresenter @Inject constructor(private val homeActivityView: Ho
 
           override fun onResponse(call: Call<WeatherForecast>?,
               response: Response<WeatherForecast>) {
+            println(response.body()?.current?.temp_c)
             if (response.isSuccessful) {
               homeActivityView.showWeatherForecast(response.body())
             } else {

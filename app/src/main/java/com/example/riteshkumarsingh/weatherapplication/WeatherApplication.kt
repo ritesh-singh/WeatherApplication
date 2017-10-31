@@ -8,6 +8,7 @@ import com.example.riteshkumarsingh.weatherapplication.di.components.DaggerAppli
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApiModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApplicationModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.CacheModule
+import com.example.riteshkumarsingh.weatherapplication.di.modules.EndpointModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.InterceptorModule
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -41,6 +42,7 @@ open class WeatherApplication : Application() {
     applicationComponent = DaggerApplicationComponent
         .builder()
         .applicationModule(ApplicationModule(this))
+        .endpointModule(EndpointModule())
         .cacheModule(CacheModule())
         .interceptorModule(InterceptorModule())
         .apiModule(ApiModule())

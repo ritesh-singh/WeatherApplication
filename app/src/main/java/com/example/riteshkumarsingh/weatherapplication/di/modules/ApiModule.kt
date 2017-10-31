@@ -1,11 +1,8 @@
 package com.example.riteshkumarsingh.weatherapplication.di.modules
 
-import android.content.Context
 import com.example.riteshkumarsingh.weatherapplication.Constants
-import com.example.riteshkumarsingh.weatherapplication.R
 import com.example.riteshkumarsingh.weatherapplication.network.ApiService
 import com.example.riteshkumarsingh.weatherapplication.network.EndPoint
-import com.example.riteshkumarsingh.weatherapplication.network.WeatherApiEndpoint
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -24,16 +21,6 @@ import javax.inject.Singleton
 
 @Module
 open class ApiModule {
-
-  @Provides
-  @Singleton
-  @Named(Constants.weatherApiKey)
-  fun providesWeatherApiKey(context: Context): String = context.getString(R.string.api_key)
-
-  @Provides @Named(Constants.unMockedEndPoint)
-  @Singleton
-  fun providesEndPoint(): EndPoint =
-      WeatherApiEndpoint()
 
   @Provides
   @Singleton
@@ -58,8 +45,7 @@ open class ApiModule {
 
   @Provides
   @Singleton
-  open fun provideRetrofit(httpClient: OkHttpClient, @Named(
-      Constants.unMockedEndPoint) endPoint: EndPoint): Retrofit {
+  open fun provideRetrofit(httpClient: OkHttpClient, endPoint: EndPoint): Retrofit {
     val retrofit = Retrofit.Builder()
         .baseUrl(endPoint.getUrl())
         .addConverterFactory(GsonConverterFactory.create())
