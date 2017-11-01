@@ -52,16 +52,19 @@ dependencies {
   kaptTest "com.google.dagger:dagger-compiler:$dagger2_version"
   kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger2_version"
 
-  androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
-
   // Testing - Mockito for unit test
   testImplementation "org.mockito:mockito-all:$mockitoVersion"
   testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
   testImplementation "org.powermock:powermock-module-junit4:$powerMockito"
   testImplementation "org.powermock:powermock-api-mockito:$powerMockito"
   testImplementation 'junit:junit:4.12'
+
+  // Okhttp Idling resource
+  androidTestCompile 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+
+  // Mockito for Android Test
+  androidTestCompile "org.mockito:mockito-android:$mockitoAndroid"
+  androidTestCompile "com.squareup.okhttp3:mockwebserver:$mockWebServer"
 
   // Espresso UI Testing dependencies.
   androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
@@ -78,6 +81,10 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
+  androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+
   androidTestCompile("com.android.support.test.espresso:espresso-contrib:$espressoVersion", {
     exclude module: 'support-annotations'
     exclude module: 'support-v4'
@@ -86,7 +93,4 @@ dependencies {
     exclude module: 'design'
   })
 
-  // Mockito for Android Test
-  androidTestCompile "org.mockito:mockito-android:$mockitoAndroid"
-  androidTestCompile "com.squareup.okhttp3:mockwebserver:$mockWebServer"
 }

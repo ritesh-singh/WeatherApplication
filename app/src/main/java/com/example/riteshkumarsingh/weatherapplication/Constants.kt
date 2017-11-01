@@ -14,5 +14,7 @@ class Constants {
     const val ADEPT_ANDROID_APP = "Adept-Android-App"
     const val VERSION = "version"
     const val CACHE_CONTROL = "Cache-Control"
+
+    var BASE_URL = "http://api.apixu.com/v1/"
   }
 }

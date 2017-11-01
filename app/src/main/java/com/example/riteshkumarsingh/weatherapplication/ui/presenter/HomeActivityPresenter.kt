@@ -32,7 +32,6 @@ class HomeActivityPresenter @Inject constructor(private val homeActivityView: Ho
 
           override fun onResponse(call: Call<WeatherForecast>?,
               response: Response<WeatherForecast>) {
-            println(response.body()?.current?.temp_c)
             if (response.isSuccessful) {
               homeActivityView.showWeatherForecast(response.body())
             } else {

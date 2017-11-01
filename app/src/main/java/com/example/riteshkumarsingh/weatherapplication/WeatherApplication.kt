@@ -5,10 +5,10 @@ import android.content.Context
 import android.net.ConnectivityManager
 import com.example.riteshkumarsingh.weatherapplication.di.components.ApplicationComponent
 import com.example.riteshkumarsingh.weatherapplication.di.components.DaggerApplicationComponent
+import com.example.riteshkumarsingh.weatherapplication.di.modules.ApiKeyModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApiModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.ApplicationModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.CacheModule
-import com.example.riteshkumarsingh.weatherapplication.di.modules.EndpointModule
 import com.example.riteshkumarsingh.weatherapplication.di.modules.InterceptorModule
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -42,14 +42,14 @@ open class WeatherApplication : Application() {
     applicationComponent = DaggerApplicationComponent
         .builder()
         .applicationModule(ApplicationModule(this))
-        .endpointModule(EndpointModule())
+        .apiKeyModule(ApiKeyModule())
         .cacheModule(CacheModule())
         .interceptorModule(InterceptorModule())
         .apiModule(ApiModule())
         .build()
   }
 
-  fun initTimber() {
+  private fun initTimber() {
     if (BuildConfig.DEBUG) {
       Timber.plant(DebugTree())
     }
