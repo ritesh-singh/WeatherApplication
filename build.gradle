@@ -13,6 +13,9 @@ buildscript {
   ext.espressoVersion = '3.0.1'
   ext.mockitoAndroid = '2.7.22'
   ext.mockWebServer = '3.6.0'
+  ext.rxjava2version = '2.0.1'
+  ext.rxAndroid2version = '2.1.5'
+  ext.rxRetrofit2Adapter = '2.3.0'
   repositories {
     google()
     jcenter()

@@ -52,6 +52,14 @@ dependencies {
   kaptTest "com.google.dagger:dagger-compiler:$dagger2_version"
   kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger2_version"
 
+
+  // RxJava and RxAndroid
+  compile "io.reactivex.rxjava2:rxandroid:$rxjava2version"
+  compile "io.reactivex.rxjava2:rxjava:$rxAndroid2version"
+
+  // RxJava Retrofit 2 Adapter
+  compile "com.squareup.retrofit2:adapter-rxjava2:$rxRetrofit2Adapter"
+
   // Testing - Mockito for unit test
   testImplementation "org.mockito:mockito-all:$mockitoVersion"
   testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
