@@ -15,7 +15,7 @@ android {
     targetSdkVersion 26
     versionCode 1
     versionName "1.0"
-//    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    //    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     testInstrumentationRunner "com.example.riteshkumarsingh.weatherapplication.ui.view.TestRunner"
   }
   buildTypes {
@@ -23,6 +23,11 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
   }
 }
 
@@ -100,5 +105,4 @@ dependencies {
     exclude module: 'recyclerview-v7'
     exclude module: 'design'
   })
-
 }

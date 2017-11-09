@@ -2,7 +2,7 @@ package com.example.riteshkumarsingh.weatherapplication.network
 
 
 import com.example.riteshkumarsingh.weatherapplication.models.WeatherForecast
-import retrofit2.Call
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -14,5 +14,5 @@ interface ApiService {
   fun getWeatherData(
       @Query("key") key: String,
       @Query("q") city: String,
-      @Query("days") totalCount: Int): Call<WeatherForecast>
+      @Query("days") totalCount: Int): Single<WeatherForecast>
 }
