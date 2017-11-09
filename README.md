@@ -6,20 +6,20 @@ All different components are in their respective branch.
 
 Tech/Language/Libraries/Framework used or to be used - 
 
-1.Koltin as language 
+1.Koltin as language -  In Use
 
-2.Retrofit for networking
+2.Retrofit for networking - Implemented
 
-3.Rxjava2 for computation and network scheduling
+3.Rxjava2 for computation and network scheduling - Implemented
 
-4.Dagger2 for dependency injection
+4.Dagger2 for dependency injection - Implemented
 
-5.Unit Testing
+5.Unit Testing - In progress
 
-6.Expresso Testing
+6.Expresso Testing - In Progress
 
-7.MVP as architecture
+7.MVP as architecture - Followed
 
-8.Timber 
+8.Timber - In use
 
-9.Google Architecture Components
+9.Google Architecture Components - In Progress
