@@ -15,17 +15,20 @@ import javax.inject.Named
  */
 @PerActivity
 class HomeActivityPresenter @Inject constructor(private val homeActivityView: HomeActivityView,
-    private val apiService: ApiService,
-    @Named(Constants.weatherApiKey) private val apiKey: String) {
+                                                private val apiService: ApiService,
+                                                @Named(Constants.weatherApiKey) private val apiKey: String) {
 
-  fun fetchWeatherData() {
-    apiService.getWeatherData(apiKey, "Bangalore", 4)
-        .compose(RxUtil.applySchedulersToSingleObservable())
-        .subscribe({ t: WeatherForecast? ->
-          homeActivityView.showWeatherForecast(t)
-        }, { t: Throwable? ->
-          homeActivityView.showErrorView()
-        })
+    fun fetchWeatherData() {
+        homeActivityView.showHideLoader(true)
+        apiService.getWeatherData(apiKey, "Bangalore", 4)
+                .compose(RxUtil.applySchedulersToSingleObservable())
+                .subscribe({ t: WeatherForecast? ->
+                    homeActivityView.showHideLoader(false)
+                    homeActivityView.showWeatherForecast(t)
+                }, { t: Throwable? ->
+                    homeActivityView.showHideLoader(false)
+                    homeActivityView.showErrorView()
+                })
 
-  }
+    }
 }
