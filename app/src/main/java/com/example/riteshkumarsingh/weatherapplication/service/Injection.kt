@@ -2,11 +2,11 @@ package com.example.riteshkumarsingh.weatherapplication.service
 
 import android.support.v4.BuildConfig
 import com.example.riteshkumarsingh.weatherapplication.Constants
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 /**
  * Created by riteshkumarsingh on 13/10/17.
@@ -25,6 +25,7 @@ class Injection {
             val okHttpClient: OkHttpClient =
                     OkHttpClient.Builder()
                             .addInterceptor(logger)
+                            .addNetworkInterceptor(StethoInterceptor())
                             .build()
 
             return okHttpClient
