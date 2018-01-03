@@ -2,6 +2,7 @@ package com.example.riteshkumarsingh.weatherapplication
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import com.squareup.leakcanary.LeakCanary
 import timber.log.Timber.DebugTree
 import timber.log.Timber
 
@@ -12,8 +13,16 @@ class WeatherApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initLeakCanary()
         initTimber()
         initStetho()
+    }
+
+    private fun initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this);
     }
 
     private fun initStetho() {
