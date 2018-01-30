@@ -1,60 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.riteshkumarsingh.weatherapplication.HomeActivity"
-    >
+    android:fillViewport="true"
+    tools:context="com.example.riteshkumarsingh.weatherapplication.ui.HomeActivity">
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-  <TextView
-      android:id="@+id/temp_in_c"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:layout_gravity="center"
-      tools:text="25.0"
-      />
+      <TextView
+          android:id="@+id/temp_in_c"
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          tools:text="25.0"
+          />
 
-  <TextView
-      android:id="@+id/temp_in_f"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:layout_gravity="center"
-      tools:text="77.0"
-      />
+      <TextView
+          android:id="@+id/temp_in_f"
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          tools:text="77.0"
+          />
 
-  <TextView
-      android:id="@+id/lat"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:layout_gravity="center"
-      tools:text="12.98"
-      />
-  <TextView
-      android:id="@+id/lon"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:layout_gravity="center"
-      tools:text="77.58"
-      />
-  <TextView
-      android:id="@+id/name"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:layout_gravity="center"
-      tools:text="Bangalore"
-      />
-  <TextView
-      android:id="@+id/region"
-      android:layout_width="wrap_content"
-      android:layout_height="0dp"
-      android:layout_weight="1"
-      android:layout_gravity="center"
-      tools:text="Karnataka"
-      />
-</LinearLayout>
+      <TextView
+          android:id="@+id/lat"
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          tools:text="12.98"
+          />
+      <TextView
+          android:id="@+id/lon"
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          tools:text="77.58"
+          />
+      <TextView
+          android:id="@+id/name"
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          tools:text="Bangalore"
+          />
+      <TextView
+          android:id="@+id/region"
+          android:layout_width="wrap_content"
+          android:layout_height="0dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          tools:text="Karnataka"
+          />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+  </RelativeLayout>
+
+
+</ScrollView>
+

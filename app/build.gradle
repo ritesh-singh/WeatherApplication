@@ -51,6 +51,9 @@ dependencies {
   implementation "android.arch.persistence.room:runtime:$room_version"
   kapt "android.arch.persistence.room:compiler:$room_version"
 
+  // ViewModel
+  implementation "android.arch.lifecycle:viewmodel:$view_model_version"
+
   // Leak Canary
   debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
   releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
