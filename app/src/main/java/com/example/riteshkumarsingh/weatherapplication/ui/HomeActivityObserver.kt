@@ -16,7 +16,7 @@ import timber.log.Timber
 /**
  * Created by riteshksingh on 1/15/18.
  */
-class HomeActivityViewModel(lifecycleOwner: LifecycleOwner,
+class HomeActivityObserver(lifecycleOwner: LifecycleOwner,
         private var weatherDataBase: WeatherDataBase?,
         private var homeActivityView: HomeActivityView) : LifecycleObserver {
 
@@ -84,7 +84,7 @@ class HomeActivityViewModel(lifecycleOwner: LifecycleOwner,
                         weatherData.region = weatherForecast?.location?.region ?: ""
 
 
-                        this@HomeActivityViewModel.weatherData = weatherData
+                        this@HomeActivityObserver.weatherData = weatherData
 
                         homeActivityView.showHideLoader(false)
                         homeActivityView.bindDataWithUi(weatherData)

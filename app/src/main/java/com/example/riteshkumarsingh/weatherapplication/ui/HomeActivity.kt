@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityView {
     private lateinit var mRegion: TextView
     private lateinit var mPbLoader: ProgressBar
 
-    private lateinit var homeActivityViewModel: HomeActivityViewModel
+    private lateinit var homeActivityObserver: HomeActivityObserver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +34,15 @@ class HomeActivity : AppCompatActivity(), HomeActivityView {
 
 
 
-        homeActivityViewModel = HomeActivityViewModel(this, mDb, this)
+        homeActivityObserver = HomeActivityObserver(this, mDb, this)
 
 
         initUI()
 
         if (isConnectedToInternet()) {
-            homeActivityViewModel.fetchWeatherData()
+            homeActivityObserver.fetchWeatherData()
         } else {
-            homeActivityViewModel.fetchWeatherDataFromDb()
+            homeActivityObserver.fetchWeatherDataFromDb()
         }
 
     }
