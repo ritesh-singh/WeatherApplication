@@ -1,4 +1,4 @@
-# WeatherApplication (In Development)
+# WeatherApplication
 A basic weather application.
 
 The aim is to make use of different components and libraries and frameworks in Android.
